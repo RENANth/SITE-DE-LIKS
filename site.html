@@ -3,14 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog Sound Clicker</title>
+    <title>Dog Clicker Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="toggleMode">Modo Noturno</button>
-    <div id="counter">Cliques: 0</div>
-    <img id="dog" src="https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1209129_960_720.jpg" alt="Dog">
+    <div id="menu">
+        <h1>Bem-vindo ao Dog Clicker Game!</h1>
+        <form id="playerForm">
+            <label for="playerName">Digite seu nome:</label>
+            <input type="text" id="playerName" placeholder="Seu nome" required>
 
+            <h2>Escolha a dificuldade:</h2>
+            <div id="difficultyButtons">
+                <button type="button" data-difficulty="easy" class="difficulty-btn">Fácil</button>
+                <button type="button" data-difficulty="medium" class="difficulty-btn">Médio</button>
+                <button type="button" data-difficulty="hard" class="difficulty-btn">Difícil</button>
+                <button type="button" data-difficulty="lsd" class="difficulty-btn">LSD</button>
+            </div>
+            <h3 id="loserMessage" style="display: none;">VOCÊ É UM LOSER</h3>
+
+            <h2>Escolha seu personagem:</h2>
+            <div id="characters">
+                <img src="https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1209129_960_720.jpg" alt="Dog" data-character="dog">
+                <img src="https://cdn.pixabay.com/photo/2015/03/26/09/43/dog-690239_960_720.jpg" alt="Dog 2" data-character="dog2">
+                <div id="customImageContainer" class="add-image">
+                    <span>+</span>
+                    <input type="file" id="customImage" accept="image/*">
+                </div>
+            </div>
+
+            <button type="submit">Iniciar Jogo</button>
+        </form>
+    </div>
+    <div id="game" style="display: none;">
+        <div id="counter">Cliques: 0</div>
+        <img id="target" alt="Target">
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
