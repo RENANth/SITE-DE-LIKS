@@ -4,99 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Sound Clicker</title>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f9f9f9;
-            font-family: Arial, sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #dog {
-            width: 200px;
-            cursor: pointer;
-            transition: transform 0.2s, left 0.3s ease, top 0.3s ease;
-            position: absolute;
-        }
-
-        #dog:active {
-            transform: scale(1.1);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img id="dog" src="https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1209129_960_720.jpg" alt="Dog" />
+    <button id="toggleMode">Modo Noturno</button>
+    <div id="counter">Cliques: 0</div>
+    <img id="dog" src="https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1209129_960_720.jpg" alt="Dog">
 
-    <script>
-        const dog = document.getElementById('dog');
-
-        // Lista de sons de cachorro
-        const dogSounds = [
-            'https://cdn.pixabay.com/download/audio/2021/09/20/audio_3f1b1c3b3e.mp3?filename=dog-barking-1.mp3',
-            'https://cdn.pixabay.com/download/audio/2022/02/03/audio_36764a74b8.mp3?filename=dog-barking-sound.mp3',
-            'https://cdn.pixabay.com/download/audio/2022/01/06/audio_68fc52b1e2.mp3?filename=small-dog-barking.mp3'
-        ];
-
-        // Lista de imagens de cachorros latindo
-        const dogImages = [
-            'https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1209129_960_720.jpg',
-            'https://cdn.pixabay.com/photo/2015/03/26/09/43/dog-690239_960_720.jpg',
-            'https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_960_720.jpg',
-            'https://cdn.pixabay.com/photo/2016/11/29/12/54/dog-1868710_960_720.jpg',
-            'https://cdn.pixabay.com/photo/2017/12/10/14/47/dog-3012514_960_720.jpg'
-        ];
-
-        // Função para gerar uma cor aleatória
-        const getRandomColor = () => {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        };
-
-        // Função para gerar uma posição aleatória
-        const getRandomPosition = () => {
-            const x = Math.random() * (window.innerWidth - 200); // Ajusta para manter a imagem dentro da tela
-            const y = Math.random() * (window.innerHeight - 200);
-            return { x, y };
-        };
-
-        // Função para aumentar a imagem
-        let currentSize = 200; // Tamanho inicial
-        const increaseSize = () => {
-            currentSize += 10; // Aumenta o tamanho
-            return currentSize;
-        };
-
-        dog.addEventListener('click', () => {
-            // Mudar a cor de fundo
-            document.body.style.backgroundColor = getRandomColor();
-
-            // Escolher um som aleatório e tocar
-            const randomSound = dogSounds[Math.floor(Math.random() * dogSounds.length)];
-            const audio = new Audio(randomSound);
-            audio.play();
-
-            // Alterar a imagem para outra aleatória
-            const randomImage = dogImages[Math.floor(Math.random() * dogImages.length)];
-            dog.src = randomImage;
-
-            // Mover para uma posição aleatória
-            const { x, y } = getRandomPosition();
-            dog.style.left = `${x}px`;
-            dog.style.top = `${y}px`;
-
-            // Aumentar a imagem
-            const newSize = increaseSize();
-            dog.style.width = `${newSize}px`;
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
