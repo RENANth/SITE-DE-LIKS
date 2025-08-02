@@ -3,17 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog Clicker Game</title>
+    <title>Clickerverso</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --main-bg1: #181c2b;
+            --main-bg2: #232946;
+            --accent1: #7f5af0;
+            --accent2: #2cb67d;
+            --accent3: #eebbc3;
+            --text-light: #f4f4f4;
+            --text-accent: #eebbc3;
+            --star: #fffbe7;
+        }
+        body {
+            background: linear-gradient(135deg, var(--main-bg1) 0%, var(--main-bg2) 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* Estrelas animadas */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--star);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite alternate;
+        }
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+        #menu {
+            background: rgba(35,41,70,0.95);
+            box-shadow: 0 8px 32px 0 #0008;
+            border-radius: 18px;
+            border: 2px solid var(--accent3);
+            animation: menuFadeIn 1s;
+            max-width: 350px;
+            margin: 40px auto;
+            padding: 22px 14px 14px 14px;
+        }
+        @keyframes menuFadeIn {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #menu h1 {
+            font-family: 'Orbitron', 'Segoe UI', 'Arial', sans-serif;
+            font-size: 1.7rem;
+            color: var(--accent1);
+            text-shadow: 0 0 8px var(--accent3), 0 0 2px #fff2;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        #menu form {
+            background: rgba(24,28,43,0.85);
+            border-radius: 12px;
+            padding: 12px 6px 6px 6px;
+            box-shadow: 0 2px 8px #0002;
+        }
+        #menu label, #menu h2, #menu h3 {
+            color: var(--accent3);
+            font-size: 1rem;
+        }
+        #menu input[type="text"] {
+            background: #232946;
+            border: 1px solid var(--accent1);
+            color: var(--text-light);
+            font-size: 1rem;
+            padding: 6px;
+            width: 90%;
+            margin-bottom: 8px;
+            border-radius: 5px;
+        }
+        #difficultyButtons {
+            gap: 6px;
+        }
+        #difficultyButtons .difficulty-btn {
+            background: linear-gradient(90deg, var(--accent1) 0%, var(--accent2) 100%);
+            color: var(--text-light);
+            font-weight: bold;
+            box-shadow: 0 2px 8px var(--accent1)55;
+            font-size: 0.95rem;
+            padding: 7px 12px;
+            border-radius: 6px;
+            border: none;
+        }
+        #difficultyButtons .difficulty-btn.selected {
+            background: linear-gradient(90deg, var(--accent2) 0%, var(--accent1) 100%);
+            border: 2px solid var(--accent3);
+            outline: 2px solid #eebbc3;
+            outline-offset: 2px;
+        }
+        .add-image, .add-bg {
+            box-shadow: 0 2px 8px var(--accent1)33;
+            background: #232946cc;
+            width: 80px;
+            height: 80px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            position: relative;
+            border: 1.5px solid var(--accent3);
+        }
+        .add-image span, .add-bg span {
+            font-size: 32px;
+            color: var(--accent2);
+            pointer-events: none;
+        }
+        .add-bg input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        button[type="submit"] {
+            background: linear-gradient(90deg, var(--accent2) 0%, var(--accent1) 100%);
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px var(--accent2)55;
+            font-size: 1rem;
+            padding: 8px 18px;
+            border-radius: 6px;
+            margin-top: 10px;
+            color: var(--text-light);
+            border: none;
+        }
+        button[type="submit"]:hover {
+            background: linear-gradient(90deg, var(--accent1) 0%, var(--accent2) 100%);
+        }
+        #characters {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+        .add-image img {
+            border-radius: 50% !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block;
+        }
+        @media (max-width: 500px) {
+            #menu { max-width: 98vw; padding: 6px; }
+            #menu form { padding: 4px; }
+            #characters {
+                flex-direction: row;
+                gap: 8px;
+            }
+            .add-image, .add-bg { width: 60px; height: 60px; }
+        }
+    </style>
 </head>
 <body>
+    <script>
+    // Gera estrelas animadas no fundo
+    for(let i=0;i<60;i++){
+      const s=document.createElement('div');
+      s.className='star';
+      s.style.top=Math.random()*100+'vh';
+      s.style.left=Math.random()*100+'vw';
+      s.style.opacity=Math.random()*0.7+0.3;
+      s.style.width=s.style.height=(Math.random()*2+1)+'px';
+      s.style.animationDuration=(Math.random()*2+1)+'s';
+      document.body.appendChild(s);
+    }
+    </script>
     <div id="menu">
-        <h1>Bem-vindo ao Dog Clicker Game!</h1>
+        <h1>🌌 Clickerverso</h1>
         <form id="playerForm">
-            <label for="playerName">Digite seu nome:</label>
-            <input type="text" id="playerName" placeholder="Seu nome" required>
+            <label for="playerName">Seu nome:</label>
+            <input type="text" id="playerName" placeholder="Digite seu nome" required>
 
-            <h2>Escolha a dificuldade:</h2>
+            <h2>Dificuldade:</h2>
             <div id="difficultyButtons">
                 <button type="button" data-difficulty="easy" class="difficulty-btn">Fácil</button>
                 <button type="button" data-difficulty="medium" class="difficulty-btn">Médio</button>
@@ -22,13 +194,15 @@
             </div>
             <h3 id="loserMessage" style="display: none;">VOCÊ É UM LOSER</h3>
 
-            <h2>Escolha seu personagem:</h2>
+            <h2>Personagem e Fundo:</h2>
             <div id="characters">
-                <img src="https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1209129_960_720.jpg" alt="Dog" data-character="dog">
-                <img src="https://cdn.pixabay.com/photo/2015/03/26/09/43/dog-690239_960_720.jpg" alt="Dog 2" data-character="dog2">
                 <div id="customImageContainer" class="add-image">
                     <span>+</span>
                     <input type="file" id="customImage" accept="image/*">
+                </div>
+                <div id="customBgContainer" class="add-bg" title="Mudar fundo">
+                    <span>🪐</span>
+                    <input type="file" id="customBg" accept="image/*">
                 </div>
             </div>
 
@@ -40,5 +214,21 @@
         <img id="target" alt="Target">
     </div>
     <script src="script.js"></script>
+    <script>
+    // Função para trocar o fundo ao selecionar imagem
+    document.getElementById('customBg').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.body.style.backgroundImage = `url('${reader.result}')`;
+                document.body.style.backgroundSize = 'cover';
+                document.body.style.backgroundPosition = 'center';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    </script>
 </body>
 </html>
+

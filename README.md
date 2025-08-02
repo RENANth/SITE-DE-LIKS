@@ -1,25 +1,44 @@
-🐶 Dog Sound Clicker
-Dog Sound Clicker é um projeto interativo e divertido criado com HTML, CSS e JavaScript. Este aplicativo exibe uma imagem de um cachorro que, ao ser clicada, realiza diversas ações dinâmicas:
+# Clickerverso
 
-🎮 Funcionalidades:
-Reprodução de Sons: A cada clique, um som de latido é reproduzido aleatoriamente.
-Mudança de Imagem: A imagem do cachorro é alterada para outra aleatória, mostrando diferentes cães em momentos de ação.
-Mudança de Posição: A imagem do cachorro se move para uma posição aleatória na tela.
-Aumento de Tamanho: A cada clique, o tamanho da imagem aumenta ligeiramente.
-Mudança de Cor de Fundo: O fundo da página muda para uma cor aleatória, criando um efeito visual dinâmico e vibrante.
-📂 Tecnologias Utilizadas:
-HTML5: Para a estrutura básica do projeto.
-CSS3: Para estilização e efeitos visuais.
-JavaScript: Para manipulação dinâmica da página e interatividade.
-🚀 Como Usar:
-Clone ou faça o download do repositório.
-Abra o arquivo index.html no seu navegador.
-Clique na imagem do cachorro e divirta-se com as interações!
-🖼️ Pré-visualização:
+Clickerverso é um jogo clicker interativo e personalizável, onde você pode escolher seu avatar, competir em rankings e desbloquear conquistas! Inspirado pelo universo, mas aberto para qualquer personagem.
 
-🛠️ Funcionalidades Futuras:
-Adicionar mais sons e imagens para maior variedade.
-Implementar um contador de cliques.
-Tornar o design responsivo para dispositivos móveis.
-📜 Licença:
-Este projeto é distribuído sob a licença MIT. Sinta-se à vontade para usá-lo e modificá-lo!
+## Funcionalidades
+- Clique no alvo para marcar pontos e ativar efeitos visuais e sonoros.
+- Personalize seu personagem (inclusive com imagem própria).
+- Barra de progresso do tempo.
+- Ranking global/local (em memória).
+- Sistema de conquistas (ex: combos, número de cliques).
+- Avatar do jogador exibido durante o jogo.
+- Feedback visual de combos e conquistas.
+- Diferentes níveis de dificuldade, incluindo modo LSD (cores e velocidade insanas).
+- Totalmente responsivo para desktop e mobile.
+
+## Como jogar
+1. Escolha seu nome e personagem (pode adicionar imagem personalizada).
+2. Selecione a dificuldade.
+3. Clique em "Iniciar Jogo" e tente fazer o maior número de cliques!
+4. Veja seu desempenho no ranking e conquistas desbloqueadas.
+5. Ao final, clique em "Jogar Novamente" para recomeçar.
+
+## Dicas
+- Combos rápidos aumentam sua pontuação e desbloqueiam conquistas.
+- Personagens extras podem ser desbloqueados conforme você joga.
+- O modo LSD é para quem gosta de desafio visual!
+
+## Como rodar localmente
+1. Baixe ou clone este repositório.
+2. Abra o arquivo `site.html` em seu navegador preferido.
+3. Pronto! Não é necessário servidor ou instalação de dependências.
+
+## Tecnologias
+- HTML5, CSS3, JavaScript puro (sem frameworks)
+
+## Melhorias recentes
+- Código refatorado para melhor desempenho e manutenção.
+- Ajuste visual da tela de fim de jogo (cobre toda a tela).
+- Remoção de contador duplicado.
+- Melhor responsividade e acessibilidade.
+
+## Licença
+MIT
+
